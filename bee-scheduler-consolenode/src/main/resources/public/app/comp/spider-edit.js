@@ -14,12 +14,10 @@ define(['text!comp/spider-edit.html', 'css!./spider-edit.css'], function (tpl) {
 
             var validators = {
                 taskName: [
-                    {required: true, message: '请输入爬虫名称', trigger: 'blur'},
-                    {required: true, pattern: /^[A-Za-z0-9_]+$/, message: '爬虫名称只允许使用字母、数字和下划线，请检查', trigger: 'blur'}
+                    {required: true, message: '请输入爬虫名称', trigger: 'blur'}
                 ],
                 taskGroup: [
-                    {required: true, message: '请输入爬虫所属组', trigger: 'blur'},
-                    {required: true, pattern: /^[A-Za-z0-9_]+$/, message: '爬虫所属组只允许使用字母、数字和下划线，请检查', trigger: 'blur'}
+                    {required: true, message: '请输入爬虫所属组', trigger: 'blur'}
                 ]
             };
 

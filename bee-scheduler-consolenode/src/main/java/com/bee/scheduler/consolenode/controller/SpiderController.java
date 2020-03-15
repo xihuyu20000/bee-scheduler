@@ -6,13 +6,13 @@ import com.bee.scheduler.consolenode.exception.BadRequestException;
 import com.bee.scheduler.consolenode.model.Pageable;
 import com.bee.scheduler.consolenode.service.SpiderService;
 import com.bee.scheduler.consolenode.service.TaskService;
-import com.bee.scheduler.context.common.TaskSpecialGroup;
+
 import com.bee.scheduler.context.model.QuickTaskConfig;
 import com.bee.scheduler.consolenode.model.SpiderConfig;
-import com.bee.scheduler.context.model.TaskConfig;
+
 import com.bee.scheduler.context.task.TaskScheduler;
 import org.apache.commons.lang3.StringUtils;
-import org.quartz.CronExpression;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * @author  吴超
@@ -65,18 +63,10 @@ public class SpiderController {
 
         if (StringUtils.isEmpty(spiderConfig.getName())) {
             throw new BadRequestException("请输入爬虫名称");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", spiderConfig.getName())) {
-                throw new BadRequestException("爬虫名称只允许使用字母、数字和下划线，请检查");
-            }
         }
         if (StringUtils.isEmpty(spiderConfig.getGroup())) {
             throw new BadRequestException("请输入爬虫所属组");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", spiderConfig.getGroup())) {
-                throw new BadRequestException("爬虫所属组只允许使用字母、数字和下划线，请检查");
-            }
-        }
+        } 
         if (StringUtils.isEmpty(spiderConfig.getParams())) {
         	throw new BadRequestException("请输入爬虫代码");
         }
@@ -98,17 +88,9 @@ public class SpiderController {
 
         if (StringUtils.isEmpty(spiderConfig.getName())) {
             throw new BadRequestException("请输入爬虫名称");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", spiderConfig.getName())) {
-                throw new BadRequestException("爬虫名称只允许使用字母、数字和下划线，请检查");
-            }
-        }
+        } 
         if (StringUtils.isEmpty(spiderConfig.getGroup())) {
             throw new BadRequestException("请输入爬虫所属组");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", spiderConfig.getGroup())) {
-                throw new BadRequestException("爬虫所属组只允许使用字母、数字和下划线，请检查");
-            }
         }
         if (StringUtils.isEmpty(spiderConfig.getParams())) {
         	throw new BadRequestException("请输入爬虫代码");
@@ -158,11 +140,7 @@ public class SpiderController {
 
         if (StringUtils.isEmpty(quickTaskConfig.getName())) {
             throw new BadRequestException("请输入任务名称");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", quickTaskConfig.getName())) {
-                throw new BadRequestException("任务名称只允许使用字母、数字和下划线，请检查");
-            }
-        }
+        } 
 
         if (StringUtils.isEmpty(quickTaskConfig.getTaskModule())) {
             throw new BadRequestException("请选择任务组件");
