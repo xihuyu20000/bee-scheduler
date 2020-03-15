@@ -1,0 +1,173 @@
+/******* base *******/
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eef1f6;
+    color: #48576a;
+    font-size: 14px;
+}
+
+body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, input, textarea, keygen, select, button, pre {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+h5 {
+    font-size: 13px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+/******* app *******/
+.app {
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+}
+
+/******* special *******/
+[v-cloak] {
+    display: none;
+}
+
+/**ScrollBar*/
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #EFF2F7;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #c0ccda;
+}
+
+/******* el-form *****/
+.el-form.form-label-muted .el-form-item__label {
+    color: #99A9BF;
+}
+
+.el-form.no-item-margin .el-form-item {
+    margin-bottom: 0;
+}
+
+/******* Commons *******/
+.text-center {
+    text-align: center
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-info {
+    color: #20A0FF;
+}
+
+.text-success {
+    color: #13CE66;
+}
+
+.text-danger {
+    color: #FF4949;
+}
+
+.text-warning {
+    color: #F7BA2A;
+}
+
+.text-light-gray {
+    color: #E5E9F2;
+}
+
+.text-gray {
+    color: #D3DCE6;
+}
+
+.text-extra-light-silver {
+    color: #C0CCDA;
+}
+
+.text-silver {
+    color: #8492A6;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.mgbt-5px {
+    margin-bottom: 5px;
+}
+
+.mgbt-10px {
+    margin-bottom: 10px;
+}
+
+div.hr {
+    height: 1px;
+    background-color: #D3DCE6;
+    margin: 10px 0;
+}
+
+div.spr {
+    height: 5px;
+}
+
+.spr.spr-x {
+    height: 10px;
+}
+
+.font-code, .font-code textarea, .font-code input {
+    font-family: "generic-font", "InputMono", "Consolas", "Monaco", "Menlo", sans-serif !important;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+

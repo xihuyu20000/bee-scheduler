@@ -1,0 +1,38 @@
+<div class="page">
+    <div class="page-header">
+        <div class="page-title"><i class="iconfont icon-settings"></i> 系统设置</div>
+        <div class="page-breadcrumb">
+            <el-breadcrumb separator="/">
+                <el-breadcrumb-item :to="{path:'/dashboard'}">Home</el-breadcrumb-item>
+                <el-breadcrumb-item>系统设置</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="page-body-header">
+            <span>超锐知识调度, version: v2.5.2</span>
+        </div>
+        <h4 class="no-margin">管理员账号</h4>
+        <div class="hr"></div>
+        <el-row>
+            <el-col :span="12">
+                <el-form class="form-label-muted" label-width="100px">
+                    <el-form-item label="账号">{{passport.account}}</el-form-item>
+                    <el-form-item label="原密码">
+                        <el-input type="password" placeholder="旧密码" v-model="oldPassword"></el-input>
+                    </el-form-item>
+                    <el-form-item label="新密码">
+                        <el-input type="password" placeholder="新密码" v-model="newPassword"></el-input>
+                    </el-form-item>
+                    <el-form-item label="确认密码">
+                        <el-input type="password" placeholder="再次输入新密码" v-model="reNewPassword"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button @click="updatePassword">更新密码</el-button>
+                        <el-button @click="logout">退出登录</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-col>
+        </el-row>
+    </div>
+</div>

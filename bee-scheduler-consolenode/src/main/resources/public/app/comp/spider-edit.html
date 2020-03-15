@@ -1,0 +1,49 @@
+<div class="page" v-loading="initEditFormModelInProcess">
+    <div class="page-header">
+        <div class="page-title">
+            <template v-if="editFor==='New'"><i class="iconfont icon-plus"></i> 创建爬虫</template>
+            <template v-else-if="editFor==='Edit'"><i class="iconfont icon-edit"></i> 编辑爬虫</template>
+            <template v-else-if="editFor==='Copy'"><i class="iconfont icon-copy"></i> 复制爬虫</template>
+        </div>
+        <div class="page-breadcrumb">
+            <el-breadcrumb separator="/">
+                <el-breadcrumb-item :to="{path:'/dashboard'}">Home</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{path:'/code/list'}">爬虫管理</el-breadcrumb-item>
+                <el-breadcrumb-item>{{editFor==="New"?"创建爬虫":editFor==="Copy"?"复制爬虫":"编辑爬虫"}}</el-breadcrumb-item>
+            </el-breadcrumb>
+        </div>
+    </div>
+    <div class="page-body" v-show="!initEditFormModelInProcess">
+        <div style="width: 800px">
+            <el-form :model="editSpiderFormModel" ref="editSpiderForm" label-width="100px">
+                <el-input type="hidden" v-model="editSpiderFormModel.id"</el-input>
+                <h4 class="no-margin">基本信息</h4>
+                <div class="hr"></div>
+                <el-form-item label="爬虫名称" prop="name" :rules="validators.taskName">
+                    <el-input v-model="editSpiderFormModel.name"></el-input>
+                </el-form-item>
+                <el-form-item label="所属组" prop="group" :rules="validators.taskGroup">
+                    <el-autocomplete v-model="editSpiderFormModel.group" :fetch-suggestions="queryTaskGroup" placeholder="" :trigger-on-focus="false" :disabled="true" style="width: 100%"></el-autocomplete>
+                </el-form-item>
+				<el-form-item label="运行命令" prop="cmd" :rules="validators.cmd">
+                    <el-input v-model="editSpiderFormModel.cmd" placeholder="请描述Python程序的路径位置"></el-input>
+                </el-form-item>
+                <h4 class="no-margin">爬虫内容</h4>
+                <div class="hr"></div>
+                <el-form-item label="爬虫描述" prop="description">
+                    <el-input type="textarea" v-model="editSpiderFormModel.description" :autosize="{minRows: 2, maxRows: 5}" placeholder="请详细描述该爬虫"></el-input>
+                </el-form-item>
+                <el-form-item label="爬虫代码" prop="params">
+                    <!--<el-input type="textarea" v-model="editSpiderFormModel.params" class="font-code" :autosize="{minRows: 4, maxRows: 15}" placeholder="请输入爬虫组件需要的参数（JSON格式）"></el-input>-->
+                    <ace-editor language="python" :min-lines="10" v-model="editSpiderFormModel.params"></ace-editor>
+                </el-form-item>
+            </el-form>
+        </div>
+        <div class="hr"></div>
+        <div>
+            <el-button @click="routerGoback">取 消</el-button>
+            <el-button type="primary" @click="postTask" :loading="postTaskInProcess">保 存</el-button>
+        </div>
+        <el-backtop target=".page-body"></el-backtop>
+    </div>
+</div>
