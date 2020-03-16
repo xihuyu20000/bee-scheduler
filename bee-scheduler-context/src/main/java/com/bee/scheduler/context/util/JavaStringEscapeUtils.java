@@ -2,17 +2,9 @@ package com.bee.scheduler.context.util;
 
 import org.apache.commons.text.translate.*;
 
-import io.github.alekseysotnikov.cmd.core.Cmd;
-import io.github.alekseysotnikov.cmd.core.Listening;
-import io.github.alekseysotnikov.cmd.listeners.CleanUp;
-import io.github.alekseysotnikov.cmd.listeners.WorkDir;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeoutException;
 
 public class JavaStringEscapeUtils {
     private static final CharSequenceTranslator ESCAPE_JAVA;
