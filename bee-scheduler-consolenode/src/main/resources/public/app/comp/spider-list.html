@@ -11,7 +11,7 @@
     <div class="page-body">
         <el-row>
             <el-col :span="10">
-                <el-autocomplete :fetch-suggestions="querySuggestion" @select="query" select-when-unmatched="true" v-model="queryParams.keyword" style="width:100%" :debounce="0" :highlight-first-item="true" placeholder="任务名 g:任务组 s:任务状态">
+                <el-autocomplete :fetch-suggestions="querySuggestion" @select="query" select-when-unmatched="true" v-model="queryParams.keyword" style="width:100%" :debounce="0" :highlight-first-item="true" placeholder="爬虫名称">
                     <el-button slot="append" icon="el-icon-search" @click="query"></el-button>
                 </el-autocomplete>
             </el-col>
@@ -42,6 +42,10 @@
         <div v-loading="queryLoading">
             <el-table :data="queryResult.result" :show-header="true" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="45"></el-table-column>
+                <el-table-column label="ID" show-overflow-tooltip width="55">
+                    <template scope="scope">
+                        <span class="text-silver">{{scope.row.id}}</span></template>
+                </el-table-column>
                 <el-table-column label="爬虫" show-overflow-tooltip>
                     <template scope="scope">
                         <el-button type="text" class="no-padding" @click="$taskDetailDialog.open(scope.row.name,scope.row.group)"><span class="text-bold">{{scope.row.group + "." + scope.row.name}}</span></el-button>

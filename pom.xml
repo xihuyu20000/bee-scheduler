@@ -25,7 +25,7 @@
 		<module>bee-scheduler-context</module>
 		<!-- <module>bee-scheduler-executors</module> -->
 		<module>bee-scheduler-consolenode</module>
-		<module>bee-scheduler-daemonnode</module>
+		<!-- <module>bee-scheduler-daemonnode</module> -->
 	</modules>
 
 
