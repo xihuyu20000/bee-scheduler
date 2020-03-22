@@ -1,4 +1,4 @@
-package cn.crxy.scheduler.context;
+package cn.crxy.scheduler.context.util;
 
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.FactoryBean;
@@ -10,11 +10,11 @@ import cn.crxy.scheduler.context.task.TaskScheduler;
 /**
  * @author  吴超.
  */
-public class BeeSchedulerFactoryBean implements FactoryBean<TaskScheduler>, InitializingBean {
+public class SpiderSchedulerFactoryBean implements FactoryBean<TaskScheduler>, InitializingBean {
     private TaskScheduler scheduler;
     private SchedulerFactoryBean schedulerFactoryBean;
 
-    public BeeSchedulerFactoryBean(SchedulerFactoryBean schedulerFactoryBean) {
+    public SpiderSchedulerFactoryBean(SchedulerFactoryBean schedulerFactoryBean) {
         this.schedulerFactoryBean = schedulerFactoryBean;
     }
 

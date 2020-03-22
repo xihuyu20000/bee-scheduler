@@ -3,6 +3,8 @@ package cn.crxy.scheduler.context.executor;
 import java.io.File;
 import java.nio.charset.Charset;
 
+import org.apache.commons.logging.Log;
+
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Strings;
 import com.google.common.io.Files;
@@ -10,6 +12,7 @@ import com.google.common.io.Files;
 import cn.crxy.scheduler.context.core.ExecutionContext;
 import cn.crxy.scheduler.context.core.ExecutionResult;
 import cn.crxy.scheduler.context.core.ExecutorModule;
+import cn.crxy.scheduler.context.dao.SpiderDao;
 import cn.crxy.scheduler.context.util.ProcessTool;
 
 
@@ -45,31 +48,30 @@ public class SpiderTaskModule implements ExecutorModule {
     @Override
     public String getParamTemplate() {
         return "{\r" +
-        "    \"python\":\"\",\r" +
-        "    \"spider\":\"\"\r" +
+        "    \"spider\":\"\",\r" +
+        "    \"python\":\"\"\r" +
         "}";        
     }
 
     @Override
     public ExecutionResult exec(ExecutionContext context) throws Exception {
         JSONObject taskParam = context.getParam();
+        Log logger = context.getLogger();
+        
         String python = taskParam.getString("python");
         if(Strings.isNullOrEmpty(python)) {
         	python = "python";
         }
-        String spider = taskParam.getString("spider");
-//        final File tempFile = File.createTempFile(System.currentTimeMillis()+"", ".py");//创建临时文件
-        File tempFile = new File("D:/a.py");
-        
-        Files.write(spider, tempFile, Charset.forName("UTF-8"));
-        
+        String spiderId = taskParam.getString("spider");
+        final File tempFile = File.createTempFile(System.currentTimeMillis()+"", ".py");//创建临时文件
+        String code = new SpiderDao().getSpider(Long.parseLong(spiderId)).get("params").toString();
+        Files.write(code, tempFile, Charset.forName("UTF-8"));
         String cmd = python+" "+tempFile.getAbsolutePath();
         String back = new ProcessTool().run(cmd);
-        System.out.println(cmd);
-        System.out.println("运行结果 "+back);
+        logger.info("运行结果: <p>" + back);
         JSONObject data = new JSONObject();
         data.put("echo", back);
-//        tempFile.delete();
+        tempFile.delete();
         return ExecutionResult.success(data);
     }
 }

@@ -18,9 +18,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import cn.crxy.scheduler.consolenode.core.BuildInTaskModuleLoader;
 import cn.crxy.scheduler.consolenode.core.ClassPathJarArchiveTaskModuleLoader;
 import cn.crxy.scheduler.consolenode.web.PassportInterceptor;
-import cn.crxy.scheduler.context.BeeSchedulerFactoryBean;
-import cn.crxy.scheduler.context.CustomizedQuartzSchedulerFactoryBean;
 import cn.crxy.scheduler.context.task.TaskModuleRegistry;
+import cn.crxy.scheduler.context.util.CustomizedQuartzSchedulerFactoryBean;
+import cn.crxy.scheduler.context.util.SpiderSchedulerFactoryBean;
 
 import javax.sql.DataSource;
 import java.util.Map;
@@ -103,7 +103,7 @@ public class ApplicationBootStrap {
     }
 
     @Bean
-    public BeeSchedulerFactoryBean beeSchedulerFactoryBean(CustomizedQuartzSchedulerFactoryBean customizedQuartzSchedulerFactoryBean) {
-        return new BeeSchedulerFactoryBean(customizedQuartzSchedulerFactoryBean);
+    public SpiderSchedulerFactoryBean beeSchedulerFactoryBean(CustomizedQuartzSchedulerFactoryBean customizedQuartzSchedulerFactoryBean) {
+        return new SpiderSchedulerFactoryBean(customizedQuartzSchedulerFactoryBean);
     }
 }

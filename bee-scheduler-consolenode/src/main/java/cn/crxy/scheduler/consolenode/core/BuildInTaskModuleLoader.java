@@ -14,7 +14,7 @@ public class BuildInTaskModuleLoader implements TaskModuleLoader {
     @Override
     public List<ExecutorModule> load() {
         return new ArrayList<ExecutorModule>() {{
-            add(new ShellTaskModule());
+//            add(new ShellTaskModule());
 //            add(new HttpExcutorModule());
 //            add(new JustTestModule());
 //            add(new ClearTaskHistoryTaskModule());

@@ -7,7 +7,6 @@ import cn.crxy.scheduler.consolenode.exception.BadRequestException;
 import cn.crxy.scheduler.consolenode.model.Pageable;
 import cn.crxy.scheduler.consolenode.model.SpiderConfig;
 import cn.crxy.scheduler.consolenode.service.SpiderService;
-import cn.crxy.scheduler.consolenode.service.TaskService;
 import cn.crxy.scheduler.context.model.QuickTaskConfig;
 import cn.crxy.scheduler.context.task.TaskScheduler;
 
@@ -28,22 +27,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpiderController {
     @Autowired
     private TaskScheduler scheduler;
-
-    @Autowired
-    private TaskService taskService;
     
     @Autowired
     private SpiderService spiderService;
-
-//    @GetMapping("/task/groups")
-//    public ResponseEntity<List<String>> taskGroups() throws Exception {
-//        return ResponseEntity.ok(scheduler.getTaskGroups());
-//    }
-//
-//    @GetMapping("/task/query-suggestions")
-//    public ResponseEntity<List<String>> querySuggestions(String input) throws Exception {
-//        return ResponseEntity.ok(taskService.taskQuerySuggestion(scheduler.getSchedulerName(), input));
-//    }
 
     @GetMapping("/spider/list")
     public ResponseEntity<Pageable<SpiderConfig>> list(String keyword, Integer page) throws Exception {
@@ -74,11 +60,6 @@ public class SpiderController {
         spiderService.save(spiderConfig);
     }
 
-//    @GetMapping("/task/detail")
-//    public ResponseEntity<TaskConfig> detail(String group, String name) throws Exception {
-//        return ResponseEntity.ok(scheduler.getTaskConfig(group, name));
-//    }
-
     @PostMapping("/spider/edit")
     public void edit(@RequestBody SpiderConfig spiderConfig) throws Exception {
         spiderConfig.setName(StringUtils.trimToEmpty(spiderConfig.getName()));
@@ -106,36 +87,8 @@ public class SpiderController {
         }
     }
 
-//    @PostMapping("/task/pause")
-//    public void pause(String[] taskIds) throws Exception {
-//        for (String taskId : taskIds) {
-//            String[] group$name = StringUtils.split(taskId, "-");
-//            String group = group$name[0], name = group$name[1];
-//            scheduler.pause(group, name);
-//        }
-//    }
-//
-//    @PostMapping("/task/resume")
-//    public void resume(String[] taskIds) throws Exception {
-//        for (String taskId : taskIds) {
-//            String[] group$name = StringUtils.split(taskId, "-");
-//            String group = group$name[0], name = group$name[1];
-//            scheduler.resume(group, name);
-//        }
-//    }
-//
-//    @PostMapping("/task/execute")
-//    public void execute(String[] taskIds) throws Exception {
-//        for (String taskId : taskIds) {
-//            String[] group$name = StringUtils.split(taskId, "-");
-//            String name = group$name[1];
-//            String group = group$name[0];
-//            scheduler.trigger(group, name);
-//        }
-//    }
-//
-    @PostMapping("/spdier/tmp")
-    public void quickTask(@RequestBody QuickTaskConfig quickTaskConfig) throws Exception {
+    @PostMapping("/spider/tmp")
+    public void tmpTask(@RequestBody QuickTaskConfig quickTaskConfig) throws Exception {
         quickTaskConfig.setName(StringUtils.trimToEmpty(quickTaskConfig.getName()));
 
         if (StringUtils.isEmpty(quickTaskConfig.getName())) {
@@ -148,8 +101,6 @@ public class SpiderController {
         if (StringUtils.isNotEmpty(quickTaskConfig.getParams())) {
             try {
                 JSONObject parseObject = JSON.parseObject(quickTaskConfig.getParams());
-                Long spiderId = parseObject.getLong("spider");
-                parseObject.put("spider", spiderService.get(spiderId).getParams());
                 quickTaskConfig.setParams(parseObject.toJSONString());
             } catch (Exception e) {
                 throw new BadRequestException("任务参数输入有误，必须是JSON格式");

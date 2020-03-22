@@ -6,9 +6,9 @@ import org.quartz.*;
 import org.quartz.utils.DBConnectionManager;
 import org.springframework.scheduling.quartz.LocalDataSourceJobStore;
 
-import cn.crxy.scheduler.context.TaskExecutionContextUtil;
 import cn.crxy.scheduler.context.common.TaskExecState;
 import cn.crxy.scheduler.context.core.ExecutionResult;
+import cn.crxy.scheduler.context.util.TaskExecutionContextUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

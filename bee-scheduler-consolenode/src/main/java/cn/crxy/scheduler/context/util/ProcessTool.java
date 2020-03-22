@@ -61,7 +61,6 @@ public class ProcessTool {
 					BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
 					String line = null;
 					while ((line = br.readLine()) != null) {
-						System.out.println("输出内容：" + line);
 						queue.add(line);
 					}
 				} catch (Exception e) {

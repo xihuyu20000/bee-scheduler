@@ -7,10 +7,6 @@ import cn.crxy.scheduler.context.core.ExecutionResult;
 import cn.crxy.scheduler.context.core.ExecutorModule;
 import cn.crxy.scheduler.context.util.ProcessTool;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 /**
  * @author  吴超 该组件提供运行服务端脚本的功能
  */
