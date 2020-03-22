@@ -9,13 +9,6 @@
     <artifactId>bee-scheduler-context</artifactId>
 
     <dependencies>
-		<!-- 
-		<dependency>
-            <groupId>com.bee.scheduler</groupId>
-            <artifactId>bee-scheduler-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-		 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
@@ -39,12 +32,15 @@
             <artifactId>commons-text</artifactId>
             <version>1.7</version>
         </dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>        
         <dependency>
             <groupId>com.ibeetl</groupId>
             <artifactId>beetlsql</artifactId>
             <version>2.11.0</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>

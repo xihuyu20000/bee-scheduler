@@ -1,4 +1,4 @@
-package com.bee.scheduler.consolenode;
+package com.bee.scheduler;
 
 import com.bee.scheduler.consolenode.core.BuildInTaskModuleLoader;
 import com.bee.scheduler.consolenode.core.ClassPathJarArchiveTaskModuleLoader;

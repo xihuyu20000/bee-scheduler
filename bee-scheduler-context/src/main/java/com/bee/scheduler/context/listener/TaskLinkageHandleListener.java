@@ -7,8 +7,9 @@ import com.bee.scheduler.context.TaskExecutionContextUtil;
 import com.bee.scheduler.context.common.Constants;
 import com.bee.scheduler.context.common.TaskFiredWay;
 import com.bee.scheduler.context.common.TaskSpecialGroup;
+import com.bee.scheduler.context.core.ExecutionResult;
 import com.bee.scheduler.context.task.TaskExecutorProxy;
-import com.bee.scheduler.core.ExecutionResult;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

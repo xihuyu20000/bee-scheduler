@@ -1,4 +1,4 @@
-package com.bee.scheduler.core;
+package com.bee.scheduler.context.core;
 
 import com.alibaba.fastjson.JSONObject;
 

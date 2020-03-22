@@ -3,7 +3,8 @@ package com.bee.scheduler.context;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bee.scheduler.context.common.Constants;
-import com.bee.scheduler.core.ExecutionResult;
+import com.bee.scheduler.context.core.ExecutionResult;
+
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;

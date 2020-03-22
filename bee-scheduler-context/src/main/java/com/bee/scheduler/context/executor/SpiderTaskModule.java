@@ -1,16 +1,13 @@
 package com.bee.scheduler.context.executor;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bee.scheduler.context.core.ExecutionContext;
+import com.bee.scheduler.context.core.ExecutionResult;
+import com.bee.scheduler.context.core.ExecutorModule;
 import com.bee.scheduler.context.util.ProcessTool;
-import com.bee.scheduler.core.ExecutionContext;
-import com.bee.scheduler.core.ExecutionResult;
-import com.bee.scheduler.core.ExecutorModule;
 import com.google.common.base.Strings;
 import com.google.common.io.Files;
 
@@ -60,7 +57,9 @@ public class SpiderTaskModule implements ExecutorModule {
         	python = "python";
         }
         String spider = taskParam.getString("spider");
-        final File tempFile = File.createTempFile(System.currentTimeMillis()+"", ".py");//创建临时文件
+//        final File tempFile = File.createTempFile(System.currentTimeMillis()+"", ".py");//创建临时文件
+        File tempFile = new File("D:/a.py");
+        
         Files.write(spider, tempFile, Charset.forName("UTF-8"));
         
         String cmd = python+" "+tempFile.getAbsolutePath();
@@ -69,7 +68,7 @@ public class SpiderTaskModule implements ExecutorModule {
         System.out.println("运行结果 "+back);
         JSONObject data = new JSONObject();
         data.put("echo", back);
-        tempFile.delete();
+//        tempFile.delete();
         return ExecutionResult.success(data);
     }
 }

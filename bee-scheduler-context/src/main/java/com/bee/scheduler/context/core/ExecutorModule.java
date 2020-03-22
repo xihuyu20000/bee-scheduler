@@ -1,4 +1,4 @@
-package com.bee.scheduler.core;
+package com.bee.scheduler.context.core;
 
 /**
  * @author  吴超 任务组件接口

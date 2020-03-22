@@ -2,7 +2,8 @@ package com.bee.scheduler.context.task;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.bee.scheduler.core.ExecutionContext;
+import com.bee.scheduler.context.core.ExecutionContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.quartz.JobExecutionContext;
