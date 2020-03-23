@@ -6,7 +6,8 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>bee-scheduler-consolenode</artifactId>
+	<name>SpiderScheduler</name>
+    <artifactId>SpiderScheduler</artifactId>
 
     <dependencies>
         <dependency>

@@ -1,12 +1,10 @@
 package cn.crxy.scheduler.consolenode.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 
 import cn.crxy.scheduler.consolenode.exception.BadRequestException;
 import cn.crxy.scheduler.consolenode.model.Pageable;
 import cn.crxy.scheduler.consolenode.model.TaskDetail;
-import cn.crxy.scheduler.consolenode.service.SpiderService;
 import cn.crxy.scheduler.consolenode.service.TaskService;
 import cn.crxy.scheduler.context.common.TaskSpecialGroup;
 import cn.crxy.scheduler.context.model.QuickTaskConfig;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * @author  吴超
@@ -35,9 +32,6 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
-    
-    @Autowired
-    private SpiderService spiderService;
 
     @GetMapping("/task/groups")
     public ResponseEntity<List<String>> taskGroups() throws Exception {
@@ -65,18 +59,20 @@ public class TaskController {
 
         if (StringUtils.isEmpty(taskConfig.getName())) {
             throw new BadRequestException("请输入任务名称");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", taskConfig.getName())) {
-                throw new BadRequestException("任务名称只允许使用字母、数字和下划线，请检查");
-            }
-        }
+        } 
+//        else {
+//            if (!Pattern.matches("^[A-Za-z0-9_]+$", taskConfig.getName())) {
+//                throw new BadRequestException("任务名称只允许使用字母、数字和下划线，请检查");
+//            }
+//        }
         if (StringUtils.isEmpty(taskConfig.getGroup())) {
             throw new BadRequestException("请输入任务所属组");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", taskConfig.getGroup())) {
-                throw new BadRequestException("任务所属组只允许使用字母、数字和下划线，请检查");
-            }
         }
+//        else {
+//            if (!Pattern.matches("^[A-Za-z0-9_]+$", taskConfig.getGroup())) {
+//                throw new BadRequestException("任务所属组只允许使用字母、数字和下划线，请检查");
+//            }
+//        }
         if (StringUtils.isEmpty(taskConfig.getTaskModule())) {
             throw new BadRequestException("请选择任务组件");
         }
@@ -179,11 +175,12 @@ public class TaskController {
 
         if (StringUtils.isEmpty(quickTaskConfig.getName())) {
             throw new BadRequestException("请输入任务名称");
-        } else {
-            if (!Pattern.matches("^[A-Za-z0-9_]+$", quickTaskConfig.getName())) {
-                throw new BadRequestException("任务名称只允许使用字母、数字和下划线，请检查");
-            }
-        }
+        } 
+//        else {
+//            if (!Pattern.matches("^[A-Za-z0-9_]+$", quickTaskConfig.getName())) {
+//                throw new BadRequestException("任务名称只允许使用字母、数字和下划线，请检查");
+//            }
+//        }
 
         if (StringUtils.isEmpty(quickTaskConfig.getTaskModule())) {
             throw new BadRequestException("请选择任务组件");

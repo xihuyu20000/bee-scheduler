@@ -18,11 +18,11 @@ define(['text!comp/task-edit.html', 'css!./task-edit.css'], function (tpl) {
                 ],
                 taskName: [
                     {required: true, message: '请输入任务名称', trigger: 'blur'},
-                    {required: true, pattern: /^[A-Za-z0-9_]+$/, message: '任务名称只允许使用字母、数字和下划线，请检查', trigger: 'blur'}
+					//{required: true, pattern: /^[A-Za-z0-9_]+$/, message: '任务名称只允许使用字母、数字和下划线，请检查', trigger: 'blur'}
                 ],
                 taskGroup: [
                     {required: true, message: '请输入任务所属组', trigger: 'blur'},
-                    {required: true, pattern: /^[A-Za-z0-9_]+$/, message: '任务所属组只允许使用字母、数字和下划线，请检查', trigger: 'blur'}
+                    //{required: true, pattern: /^[A-Za-z0-9_]+$/, message: '任务所属组只允许使用字母、数字和下划线，请检查', trigger: 'blur'}
                 ],
                 taskCron: [
                     {required: true, message: '请输入Cron表达式', trigger: 'blur'}

@@ -2,6 +2,7 @@ package cn.crxy.scheduler;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
@@ -29,24 +30,18 @@ import java.util.Optional;
 @SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
 public class ApplicationBootStrap {
     private static Log logger = LogFactory.getLog(ApplicationBootStrap.class);
-
+    
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(ApplicationBootStrap.class);
         //检查启动参数
-        SimpleCommandLinePropertySource commandLinePropertySource = new SimpleCommandLinePropertySource(args);
+//        SimpleCommandLinePropertySource commandLinePropertySource = new SimpleCommandLinePropertySource(args);
         //dburl
-        String dburl = commandLinePropertySource.getProperty("dburl");
-        if (dburl == null) {
-            dburl = "jdbc:mysql://localhost:3306/bee?user=root&password=admin&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai";
+//        String dburl = commandLinePropertySource.getProperty("dburl");
+//        if (dburl == null) {
+////            dburl = "jdbc:mysql://localhost:3306/bee?user=root&password=admin&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai";
 //            throw new RuntimeException("please specify --dburl in args(e.g. --dburl=jdbc:mysql://127.0.0.1:3306/bee-scheduler?user=root&password=root&useSSL=false&characterEncoding=UTF-8)");
-        }
-        if (dburl.startsWith("jdbc:mysql://")) {
-            app.setAdditionalProfiles("mysql");
-        } else if (dburl.startsWith("jdbc:postgresql://")) {
-            app.setAdditionalProfiles("postgresql");
-        } else {
-            throw new RuntimeException("invalid argument:dburl");
-        }
+//        }
+        app.setAdditionalProfiles("mysql");
         //load executor modules
         app.addInitializers(applicationContext -> {
             try {
